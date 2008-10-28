@@ -1,0 +1,65 @@
+FlashHelpers
+============
+
+This extension provides a simple way to handle flash messages.
+You can easily display notices, errors and warnings using the convinience method.
+
+Installation
+============
+
+In your Rails app root, use the following command-line :
+ 
+	cd vendor/plugins
+	hg clone http://bitbucket.org/Bounga/flash-helper
+	
+If you want to install the flash_helpers CSS file in your stylesheets directory, use :
+	
+	rake flash_helpers:install
+
+Example
+=======
+
+For example, in your layout use :
+
+	display_flashes
+
+Then in your controllers you can use :
+
+	flash[:notice] = "Successfully created..."
+	flash[:errors] = "Creation failed!"
+	flash[:errors] = @news.errors
+	flash[:warning] = "The new user has no blog associated..."
+
+Tune display_flashes :
+
+Options for flash helpers are optional and get their default values from the
+Bounga::FlashHelpers::ViewHelpers.flash_options hash. You can write to this hash to
+override default options on the global level:
+
+	Bounga::FlashHelpers::ViewHelpers.flash_options[:notice_class] = 'my_notice'
+	
+Available options (and their defaults) are :
+
+	:list_class       => 'errors_list'
+	:notice_class     => 'notice'
+	:errors_class     => 'errors'
+	:warning_class    => 'warning'
+	:default_message  => 'There are problems in your submission:'
+	
+By putting this into "config/initializers/flash_helpers.rb" (or simply environment.rb in
+older versions of Rails) you can easily override any default option.
+
+TODO
+====
+
+Add tests
+
+Other
+=====
+
+More information on [Project homepage](http://www.bitbucket.org/Bounga/flash-helper)
+
+Problems, comments, and suggestions are welcome on the [ticket system](http://www.bitbucket.org/Bounga/flash-helper/tickets/new)
+
+
+Copyright (c) 2008 Nicolas Cavigneaux, released under the MIT license
