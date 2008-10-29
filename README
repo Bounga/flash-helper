@@ -7,7 +7,7 @@ This extension provides a simple way to handle flash messages.
 You can easily display notices, errors and warnings using the convinience method.
 
 Installation
-============
+------------
 
 In your Rails app root, use the following command-line :
  
@@ -19,7 +19,7 @@ If you want to install the flash_helpers CSS file in your stylesheets directory,
 	rake flash_helpers:install
 
 Example
-=======
+-------
 
 For example, in your layout use :
 
@@ -51,13 +51,8 @@ Available options (and their defaults) are :
 By putting this into "config/initializers/flash_helpers.rb" (or simply environment.rb in
 older versions of Rails) you can easily override any default option.
 
-TODO
-====
-
-Add tests
-
 Other
-=====
+-----
 
 More information on [Project homepage](http://www.bitbucket.org/Bounga/flash-helper)
 
