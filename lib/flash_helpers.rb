@@ -57,6 +57,7 @@ module Bounga
         else
           return
         end
+        flash.discard(:notice); flash.discard(:warning); flash.discard(:errors)
         content_tag 'div', flash_to_display, :class => "#{level}"
       end 
 
