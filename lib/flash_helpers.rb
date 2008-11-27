@@ -72,3 +72,5 @@ module Bounga
     end
   end
 end
+
+ActionView::Base.send :include, Bounga::FlashHelpers::ViewHelpers
