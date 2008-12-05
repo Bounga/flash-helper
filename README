@@ -1,7 +1,7 @@
 -*-markdown-*-
 
-FlashHelpers
-============
+FlashHelper
+===========
 
 This extension provides a simple way to handle flash messages.
 You can easily display notices, errors and warnings using the convinience method.
@@ -14,9 +14,9 @@ In your Rails app root, use the following command-line :
 	cd vendor/plugins
 	hg clone http://bitbucket.org/Bounga/flash-helper
 	
-If you want to install the flash_helpers CSS file in your stylesheets directory, use :
+If you want to install the flash_helper CSS file in your stylesheets directory, use :
 	
-	rake flash_helpers:install
+	rake flash_helper:install
 
 Example
 -------
@@ -35,10 +35,10 @@ Then in your controllers you can use :
 Tune display_flashes :
 
 Options for flash helpers are optional and get their default values from the
-Bounga::FlashHelpers::ViewHelpers.flash_options hash. You can write to this hash to
+Bounga::FlashHelper::ViewHelpers.flash_options hash. You can write to this hash to
 override default options on the global level:
 
-	Bounga::FlashHelpers::ViewHelpers.flash_options[:notice_class] = 'my_notice'
+	Bounga::FlashHelper::ViewHelpers.flash_options[:notice_class] = 'my_notice'
 	
 Available options (and their defaults) are :
 
@@ -48,7 +48,7 @@ Available options (and their defaults) are :
 	:warning_class    => 'warning'
 	:default_message  => 'There are problems in your submission:'
 	
-By putting this into "config/initializers/flash_helpers.rb" (or simply environment.rb in
+By putting this into "config/initializers/flash_helper.rb" (or simply environment.rb in
 older versions of Rails) you can easily override any default option.
 
 Other

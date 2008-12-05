@@ -3,7 +3,7 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require 'echoe'
 
-Echoe.new('flash-helper', '1.0.0') do |p|
+Echoe.new('flash_helper', '1.0.0') do |p|
   p.description    = "This Rails extension provides a simple way to handle flash messages. You can easily display notices, errors and warnings using the convinience method."
   p.url            = "http://www.bitbucket.org/Bounga/flash-helper"
   p.author         = "Nicolas Cavigneaux"

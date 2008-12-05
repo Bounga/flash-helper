@@ -1,4 +1,4 @@
-namespace :flash_helpers do
+namespace :flash_helper do
   PLUGIN_ROOT = File.dirname(__FILE__) + '/../'
   
   desc 'Install sample CSS file for flash messages.'
@@ -9,7 +9,7 @@ namespace :flash_helpers do
  
   desc 'Remove sample CSS file for flash messages..'
   task :remove do
-    FileUtils.rm %{flash_helpers.css}.collect { |f| RAILS_ROOT + "/public/stylesheets/" + f  }
+    FileUtils.rm %{flash_helper.css}.collect { |f| RAILS_ROOT + "/public/stylesheets/" + f  }
     p "Flash messages stylesheet deleted."
   end
 end

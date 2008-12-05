@@ -1,1 +1,1 @@
-require 'flash_helpers'
+require 'flash_helper'

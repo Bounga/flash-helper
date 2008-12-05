@@ -1,7 +1,7 @@
 require 'active_support'
 
 module Bounga
-  module FlashHelpers
+  module FlashHelper
     # This extension provides a simple way to handle flash messages.
     # You can easily display notices, errors and warnings using the convinience method.
     #
@@ -20,12 +20,12 @@ module Bounga
     # == Global options for helpers
     #
     # Options for flash helpers are optional and get their default values from the
-    # <tt>Bounga::FlashHelpers::ViewHelpers.flash_options</tt> hash. You can write to this hash to
+    # <tt>Bounga::FlashHelper::ViewHelpers.flash_options</tt> hash. You can write to this hash to
     # override default options on the global level:
     #
-    #   Bounga::FlashHelpers::ViewHelpers.flash_options[:notice_class] = 'my_notice'
+    #   Bounga::FlashHelper::ViewHelpers.flash_options[:notice_class] = 'my_notice'
     #
-    # By putting this into "config/initializers/flash_helpers.rb" (or simply environment.rb in
+    # By putting this into "config/initializers/flash_helper.rb" (or simply environment.rb in
     # older versions of Rails) you can easily override any default option.
     module ViewHelpers
       # default options that can be overridden on the global level
@@ -73,4 +73,4 @@ module Bounga
   end
 end
 
-ActionView::Base.send :include, Bounga::FlashHelpers::ViewHelpers
+ActionView::Base.send :include, Bounga::FlashHelper::ViewHelpers
