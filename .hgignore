@@ -1,3 +1,4 @@
 syntax: glob
 Manifest
 pkg/*
+html/*
