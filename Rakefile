@@ -6,18 +6,20 @@ require 'rubyforge'
 
 SPEC = Gem::Specification.new do |s|
    s.name               = 'flash_helper'
-   s.version            = '1.0.1'
+   s.version            = '1.0.2'
    s.authors            = ['Nicolas Cavigneaux']
    s.email              = 'nico@bounga.org'
    s.homepage           = 'http://www.bitbucket.org/Bounga/flash-helper'
    s.rubyforge_project  = %q{flash-helper}
    s.summary            = 'Rails extension to handle flash messages'
    s.description        = 'This Rails extension provides a simple way to handle flash messages. You can easily display notices, errors and warnings using the convinience method.'
-   candidates           = Dir.glob("{bin,assets,doc,lib,tasks,test}/**/*")
+   s.files              = [ "Rakefile", "init.rb", "install.rb", "README", "LICENCE", "uninstall.rb" ] +
+                          Dir.glob("{bin,assets,doc,lib,tasks,test}/**/*")
    s.test_file          = "test/flash_helper_test.rb"
    s.has_rdoc           = true
    s.extra_rdoc_files   = ['README']
    s.require_paths      = ["lib"]
+   s.add_dependency('actionpack')
 end
 
 desc 'run unit tests'
