@@ -42,7 +42,7 @@ task :publish_doc => [:rdoc] do
 end
 
 desc "Release gem #{SPEC.name}-#{SPEC.version}.gem"
-task :release => [:gem] do
+task :release => [:gem, :publish_doc] do
   rf = RubyForge.new.configure
   puts "Logging in"
   rf.login
