@@ -6,7 +6,7 @@ require 'rubyforge'
 
 SPEC = Gem::Specification.new do |s|
    s.name               = 'flash_helper'
-   s.version            = '1.0.2'
+   s.version            = '1.0.3'
    s.authors            = ['Nicolas Cavigneaux']
    s.email              = 'nico@bounga.org'
    s.homepage           = 'http://www.bitbucket.org/Bounga/flash-helper'
