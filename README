@@ -31,6 +31,12 @@ Then in your controllers you can use :
 	flash[:errors] = "Creation failed!"
 	flash[:errors] = @news.errors
 	flash[:warning] = "The new user has no blog associated..."
+	
+If you're using Rails >= 2.2, you can translate plugin internal messages. 
+For example in config/locales/fr.yml you can add :
+
+    flash_helper:
+      default_message: "Il y a des problèmes dans le formulaire :"
 
 Tune display_flashes :
 

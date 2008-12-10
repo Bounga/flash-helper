@@ -16,6 +16,12 @@ module Bounga
     #   flash[:errors] = "Creation failed!"
     #   flash[:errors] = @news.errors
     #   flash[:warning] = "The new user has no blog associated..."
+    #
+    # If you're using Rails >= 2.2, you can translate plugin internal messages.
+    # For example in config/locales/fr.yml you can add :
+    # 
+    # flash_helper:
+    #   default_message: "Il y a des problèmes dans le formulaire :"
    
     # == Global options for helpers
     #
@@ -37,6 +43,17 @@ module Bounga
         :default_message  => 'There are problems in your submission:'
       }
       mattr_reader :flash_options
+      
+      # Enable I18n if using Rails >= 2.2
+      if Rails::VERSION::STRING >= '2.2'
+        I18n.backend.store_translations :'en', {
+          :flash_helper => {
+            :default_message => 'There are problems in your submission:'
+          }
+        }
+        @@flash_options.merge!(:default_message  => I18n.t('flash_helper.default_message'))
+      end
+      
       
       # Display flash messages.
       # You can pass an optional string as a parameter. It will be display before
