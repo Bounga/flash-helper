@@ -49,7 +49,7 @@ module Bounga
         elsif flash[:errors]
           level = @@flash_options[:errors_class]
           if flash[:errors].instance_of? ActiveRecord::Errors
-            flash_to_display = message
+            flash_to_display = message.dup
             flash_to_display << activerecord_error_list(flash[:errors])
           else
             flash_to_display = flash[:errors]
