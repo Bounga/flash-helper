@@ -14,8 +14,8 @@ border: solid 1px #ffc707;
 background-color: #FCC;
 border: solid 1px #C66;
 }
-.fieldWithErrors {
-display: inline;
+.fieldWithErrors label{
+border: 2px solid #C66;
 }
 #errorExplanation {
 width: 400px;
