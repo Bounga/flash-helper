@@ -17,12 +17,12 @@ module Bounga
     #   flash[:errors] = @news.errors
     #   flash[:warning] = "The new user has no blog associated..."
     #
-    # If you're using Rails >= 2.2, you can translate plugin internal messages.
-    # For example in config/locales/fr.yml you can add :
-    # 
+    # You can translate plugin internal messages,
+    # for example in config/locales/fr.yml you can add :
+    #
     # flash_helper:
     #   default_message: "Il y a des problèmes dans le formulaire :"
-   
+
     # == Global options for helpers
     #
     # Options for flash helpers are optional and get their default values from the
@@ -43,18 +43,14 @@ module Bounga
         :default_message  => 'There are problems in your submission:'
       }
       mattr_reader :flash_options
-      
-      # Enable I18n if using Rails >= 2.2
-      if Rails::VERSION::STRING >= '2.2'
-        I18n.backend.store_translations :'en', {
-          :flash_helper => {
-            :default_message => 'There are problems in your submission:'
-          }
+
+      I18n.backend.store_translations :'en', {
+        :flash_helper => {
+          :default_message => 'There are problems in your submission:'
         }
-        @@flash_options.merge!(:default_message  => I18n.t('flash_helper.default_message'))
-      end
-      
-      
+      }
+      @@flash_options.merge!(:default_message  => I18n.t('flash_helper.default_message'))
+
       # Display flash messages.
       # You can pass an optional string as a parameter. It will be display before
       # error messages.
@@ -65,7 +61,7 @@ module Bounga
           flash_to_display, level = flash[:warning], @@flash_options[:warning_class]
         elsif flash[:errors]
           level = @@flash_options[:errors_class]
-          if flash[:errors].instance_of? ActiveRecord::Errors
+          if flash[:errors].instance_of? ActiveModel::Errors
             flash_to_display = message.dup
             flash_to_display << activerecord_error_list(flash[:errors])
           else
@@ -75,16 +71,16 @@ module Bounga
           return
         end
         flash.discard(:notice); flash.discard(:warning); flash.discard(:errors)
-        content_tag 'div', flash_to_display, :class => "#{level}"
-      end 
+        content_tag('div', flash_to_display.html_safe, :class => "#{level}")
+      end
 
-      
+
       def activerecord_error_list(errors)
-        error_list = '<ul class="' + @@flash_options[:list_class] + '">'
-        error_list << errors.collect do |e, m|
-          "<li>#{e.humanize unless e == "base"} #{m}</li>"
-        end.to_s << '</ul>'
-        error_list
+        content_tag :ul, :class => @@flash_options[:list_class] do
+          errors.full_messages.collect do |m|
+            content_tag(:li, m.html_safe)
+          end.to_s.html_safe
+        end
       end
     end
   end
