@@ -59,13 +59,15 @@ module Bounga
           flash_to_display, level = flash[:notice], @@flash_options[:notice_class]
         elsif flash[:warning]
           flash_to_display, level = flash[:warning], @@flash_options[:warning_class]
-        elsif flash[:errors]
+        elsif flash[:errors] || flash[:alert]
+          error_flash = flash[:errors] || flash[:alert]
           level = @@flash_options[:errors_class]
-          if flash[:errors].instance_of? ActiveModel::Errors
+
+          if error_flash.instance_of? ActiveModel::Errors
             flash_to_display = message.dup
-            flash_to_display << activerecord_error_list(flash[:errors])
+            flash_to_display << activerecord_error_list(error_flash)
           else
-            flash_to_display = flash[:errors]
+            flash_to_display = error_flash
           end
         else
           return

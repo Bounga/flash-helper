@@ -68,4 +68,30 @@ describe FlashHelper do
       @controller.view_context.display_flashes.must_include m
     end
   end
+
+  it "should return an error message if flash[:alert] is set" do
+    message = "Hey it is a test notice message"
+
+    @controller.flash[:alert] = message
+
+    @controller.view_context.display_flashes.must_be_kind_of String
+    @controller.view_context.display_flashes.must_include message
+    @controller.view_context.display_flashes.must_include %q{class="errors"}
+  end
+
+  it "should return an ul with validation errors if an invalid ActiveRecord object is passed" do
+    page = Page.create
+
+    page.valid?.must_equal false
+
+    @controller.flash[:alert] = page.errors
+
+    @controller.view_context.display_flashes.must_be_kind_of String
+    @controller.view_context.display_flashes.must_include %q{<div class="errors"}
+    @controller.view_context.display_flashes.must_include %q{<ul class="errors_list"}
+
+    page.errors.full_messages.each do |m|
+      @controller.view_context.display_flashes.must_include m
+    end
+  end
 end
