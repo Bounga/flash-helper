@@ -26,11 +26,12 @@ Then in your controllers you can use :
 
 	flash[:notice] = "Successfully created..."
 	flash[:errors] = "Creation failed!"
-	flash[:errors] = @news.errors
+	flash[:alert] = @news.errors
 	flash[:warning] = "The new user has no blog associated..."
 
-If you're using Rails >= 2.2, you can translate plugin internal messages.
-For example in config/locales/fr.yml you can add :
+Notice that "errors" and "alert" act the same way, they are just aliases due to old Rails convention where default convention key was "errors" and not "alert".
+
+To translate default messages, in config/locales/fr.yml you can add :
 
     flash_helper:
       default_message: "Il y a des problèmes dans le formulaire :"
