@@ -90,7 +90,7 @@ GEM
       polyglot (>= 0.3.1)
     turn (0.9.6)
       ansi
-    tzinfo (0.3.33)
+    tzinfo (0.3.61)
 
 PLATFORMS
   ruby
